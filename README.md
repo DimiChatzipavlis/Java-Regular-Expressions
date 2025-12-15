@@ -29,15 +29,24 @@ javac normal/*.java advanced/*.java
 
 ### Run Normal Examples
 ```bash
-java normal.SimpleMatch
-java normal.CharacterClasses
-java normal.Quantifiers
+java SimpleMatch
+java CharacterClasses
+java Quantifiers
 ```
 
 ### Run Advanced Examples
 These examples are interactive and will ask for input.
 ```bash
-java advanced.EmailValidation
-java advanced.LogParser
-java advanced.PasswordStrength
+java EmailValidation
+java LogParser
+java PasswordStrength
+```
+
+### Run Data Format Examples
+Located in `src/data_formats/`. Demonstrates simple XML and JSON handling.
+```bash
+cd ../data_formats
+javac --release 8 *.java
+java XmlDemo
+java JsonDemo
 ```
