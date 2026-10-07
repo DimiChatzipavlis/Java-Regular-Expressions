@@ -33,8 +33,7 @@ public class LogParser {
     // (\w+)              - Group 3: Method (GET, POST, etc.)
     // \s                 - Space
     // (\S+)              - Group 4: URL (non-whitespace)
-    // \s                 - Space
-    // [^"]*"             - Protocol and closing quote (ignored)
+    // [^"]*"             - Space, protocol and closing quote (ignored)
     // \s                 - Space
     // (\d{3})            - Group 5: Status Code (3 digits)
     // .*                 - The rest of the line

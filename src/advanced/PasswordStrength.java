@@ -39,7 +39,7 @@ public class PasswordStrength {
         Scanner scanner = new Scanner(System.in);
         
         System.out.println("=== Password Strength Checker ===");
-        System.out.println("Rules: 8+ chars, 1 digit, 1 lower, 1 upper, 1 special (@#$%^&+=), no spaces.");
+        System.out.println("Rules: 8+ chars, 1 digit, 1 lower, 1 upper, 1 special (@#$%^&+=), no whitespace.");
         System.out.println("Enter 'exit' to quit.");
         
         while (true) {
@@ -65,14 +65,15 @@ public class PasswordStrength {
         return PASSWORD_PATTERN.matcher(password).matches();
     }
     
-    // Helper to give feedback (without regex for simplicity in feedback logic, 
-    // but demonstrating what the regex checks for)
+    // Helper to give feedback: one small regex per rule, so the user learns
+    // exactly which part of the big lookahead regex failed
     private static void analyzeWeakness(String password) {
         if (password.length() < 8) System.out.println("  - Too short (min 8 chars)");
         if (!password.matches(".*\\d.*")) System.out.println("  - Missing digit");
         if (!password.matches(".*[a-z].*")) System.out.println("  - Missing lowercase");
         if (!password.matches(".*[A-Z].*")) System.out.println("  - Missing uppercase");
         if (!password.matches(".*[@#$%^&+=].*")) System.out.println("  - Missing special char");
-        if (password.contains(" ")) System.out.println("  - Contains spaces");
+        // Same rule as (?=\S+$): spaces, tabs and any other whitespace are rejected
+        if (password.matches(".*\\s.*")) System.out.println("  - Contains whitespace");
     }
 }

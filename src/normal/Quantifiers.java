@@ -22,20 +22,25 @@ public class Quantifiers {
         System.out.println("Text: " + text);
         System.out.println("-------------------------------");
 
-        // Example 1: Match 'a' followed by one or more 'a's (a+)
+        // Example 1: Match one or more 'a's (a+)
         // This will match 'a', 'aa', 'aaa'
         System.out.println("Pattern 'a+' (one or more 'a'):");
         printMatches(text, "a+");
 
         // Example 2: Match exactly 3 digits (\\d{3})
+        // Note: '1234' also yields '123', because {3} does not care what follows
         System.out.println("\nPattern '\\d{3}' (exactly 3 digits):");
         printMatches(text, "\\d{3}");
-        
-        // Example 3: Match a digit followed by zero or more digits (\\d*)
-        System.out.println("\nPattern '\\d*' (zero or more digits):");
-        // Note: This might match empty strings between non-digits depending on implementation,
-        // but here we look at how it consumes digits.
-        printMatches(text, "\\d+"); // Using + for clearer output in this specific text context
+
+        // Example 3: Match '1' followed by zero or more digits (1\\d*)
+        // This will match '1', '12', '123', '1234' (the * allows zero extra digits)
+        System.out.println("\nPattern '1\\d*' ('1' then zero or more digits):");
+        printMatches(text, "1\\d*");
+
+        // Example 4: Match '1' optionally followed by '2' (12?)
+        // This will match '1' alone, then '12' three times
+        System.out.println("\nPattern '12?' ('1' then an optional '2'):");
+        printMatches(text, "12?");
     }
 
     private static void printMatches(String text, String regex) {

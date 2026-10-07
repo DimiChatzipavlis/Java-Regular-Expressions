@@ -34,6 +34,14 @@ public class CharacterClasses {
         // Example 3: Find specific range [a-z] (lowercase letters)
         System.out.println("\nFinding lowercase letters [a-z]:");
         printMatches(text, "[a-z]");
+
+        // Example 4: Simple class [Uid] (only the characters U, i or d)
+        System.out.println("\nFinding the characters U, i or d [Uid]:");
+        printMatches(text, "[Uid]");
+
+        // Example 5: Negation [^a-zA-Z0-9] (anything that is NOT a letter or digit)
+        System.out.println("\nFinding non-alphanumeric characters [^a-zA-Z0-9]:");
+        printMatches(text, "[^a-zA-Z0-9]");
     }
     
     private static void printMatches(String text, String regex) {
